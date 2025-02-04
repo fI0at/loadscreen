@@ -1,0 +1,186 @@
+<html>
+  <meta charset="UTF-8" />
+  <head>
+    <link rel="stylesheet" href="/loadscreen/mainmain.css">
+    <link rel="stylesheet" href="/loadscreen/main.css">
+    <link rel="icon" href="/fav.ico">
+    <title>Homigrad.com | Load Screen</title>
+  </head>
+  <body>
+    <div class="background1" id="1" style="
+        position: absolute;
+        
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        z-index: -1;
+        "></div>
+    <div class="background2" id="2" style="
+        position: absolute;
+
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        z-index: -1;
+        "></div>
+    <div id="load" style="
+        width: 512px;
+        height: 512px;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+        opacity: 0;
+        "></div>
+    <div style="
+            height: 50%;
+        ">
+      <p id="servername" style="
+            text-align: center;
+            position: relative;
+            top: calc(100% - 2.5em);
+            ">HOMIGRAD.COM</p>
+      <p id="mapname" style="
+            text-align: center;
+            position: relative;
+            top: calc(100% - 3em);
+            font-size: 20;
+            ">cs_office</p>
+    </div>
+    <div id="bottom" style="
+        height: 50%;
+        ">
+      <p id="textstatus" style="
+            position: relative;
+            text-align: center;
+            top: 0.575em;
+            font-size: 20;
+            ">Connecting...</p>
+      <div id="history" style="
+                width: 100%;
+                height: 0px;
+                position: relative;
+                top: 1.5em;
+            "></div>
+    </div>
+  </body>
+</html>
+<script>
+  let photos = ["/loadscreen/source/eng/1.png", "/loadscreen/source/eng/11.png", "/loadscreen/source/eng/13.png", "/loadscreen/source/eng/14.png", "/loadscreen/source/eng/15.png", "/loadscreen/source/eng/2525.png", "/loadscreen/source/eng/3.jpg", "/loadscreen/source/eng/32.png", "/loadscreen/source/eng/4.jpg", "/loadscreen/source/eng/5.jpg", "/loadscreen/source/eng/52.png", "/loadscreen/source/eng/55.png", "/loadscreen/source/eng/6.jpg", "/loadscreen/source/eng/6.png", "/loadscreen/source/eng/6326.png", "/loadscreen/source/eng/74.png", "/loadscreen/source/eng/8.png", "/loadscreen/source/eng/88.png", "/loadscreen/source/eng/9.jpg", "/loadscreen/source/eng/9.png", "/loadscreen/source/eng/ae.png", "/loadscreen/source/eng/ak47_joski.jpg", "/loadscreen/source/eng/ak47_lexa.jpg", "/loadscreen/source/eng/ak47_nastile.jpg", "/loadscreen/source/eng/ak47_ra3dal_stila.jpg", "/loadscreen/source/eng/chidkity.png", "/loadscreen/source/eng/cj.png", "/loadscreen/source/eng/dr.jpg", "/loadscreen/source/eng/fireinthefloor.png", "/loadscreen/source/eng/gigachadblue.png", "/loadscreen/source/eng/gigachadred.png", "/loadscreen/source/eng/hg.png", "/loadscreen/source/eng/image.png", "/loadscreen/source/eng/img_0883.png", "/loadscreen/source/eng/jgh.png", "/loadscreen/source/eng/omg.png", "/loadscreen/source/eng/ou.jpg", "/loadscreen/source/eng/pencil.png", "/loadscreen/source/eng/prettrypysi.jpg", "/loadscreen/source/eng/putin.png", "/loadscreen/source/eng/sd.png", "/loadscreen/source/eng/shitpuss.png", "https://cdn.discordapp.com/attachments/1297724088789368832/1335661930270036018/WIN_20250202_12_23_11_Pro.jpg?ex=67a2f5db&is=67a1a45b&hm=f40cf858c4557fc7f308edd17144e880c80ddc726163735b36c48c5301f56466&", "https://cdn.discordapp.com/attachments/1297724088789368832/1335661526903947415/Gust_tuff.png?ex=67a2f57b&is=67a1a3fb&hm=47ff7d5c1a06909598fed42ad281820d4090e721ae622d268c264b170be44c06&", "https://cdn.discordapp.com/attachments/1297724088789368832/1335375210706108466/IMG_8021.jpg?ex=67a29394&is=67a14214&hm=59c5064fbf0cae98603c7b52255a57b23f3713fd328674a93cd6e71c2f2d1ee5&", "https://cdn.discordapp.com/attachments/1297724088789368832/1335375210999844864/temp_image_D5DBA1EA-492D-4F6F-9BE0-6DE6EFCCF0B9.webp?ex=67a29394&is=67a14214&hm=94d7152b57283bcd9cdc170769d06bdeb92c5e0079947443804dbc26b211955f&", "https://cdn.discordapp.com/attachments/1297724088789368832/1335375211649826898/IMG_7545.jpg?ex=67a29394&is=67a14214&hm=b2bfcf268e747a42a0417226b9ebb8f6d54481a958490d9e167c71a1b70dd7e1&", "https://tenor.com/view/stop-fighting-smiling-friends-no-fight-stop-it-stop-arguing-gif-8713281799291953889", "https://cdn.discordapp.com/attachments/1297724088789368832/1334436870750470186/Screenshot_20250128_220425_Instagram.jpg?ex=67a2756e&is=67a123ee&hm=0f971754a647b28a173cffbd4d6bb161e5ef2b2370a0083a8236a82f8abd8dee&", "https://cdn.discordapp.com/attachments/1297724088789368832/1334319143905787904/IMG_0498.png?ex=67a2b08a&is=67a15f0a&hm=4a0fd679c72f1179981e1ce0ad6b99ba9bd07128455ed0a8f5a096affc148197&", "https://cdn.discordapp.com/attachments/1297724088789368832/1330231681281691689/20241109011140_1.jpg?ex=67a2fb0b&is=67a1a98b&hm=9c4e214249957ccd573fc45d30e8f14e2df9eacbb32485055e84fe539ba3fecb&", "https://cdn.discordapp.com/attachments/1297724088789368832/1329538118654627880/image.png?ex=67a26f5d&is=67a11ddd&hm=94d33134e89000de9e1d945dccde8779a36256fad55330bb0f0565fc7dde9b64&", "https://cdn.discordapp.com/attachments/1297724088789368832/1326417805339529216/Screenshot_2025-01-07_213731.png?ex=67a2f2d8&is=67a1a158&hm=541edaf067588958c0af6a37477eedecf495155bfa28d8b14cbc84d46a9293fb&", "https://cdn.discordapp.com/attachments/1297724088789368832/1325731992083370014/image.png?ex=67a26e61&is=67a11ce1&hm=4b5aea6b4063d8d66ad80e2d0f70b4c95e2211a8098951d15057bab3c0b64306&", "https://cdn.discordapp.com/attachments/1297724088789368832/1310272111931031743/image.png?ex=6764ea3f&is=676398bf&hm=d99d52fe0111d0b7ec2ef11aebda4e2908a040c2ce7d0b07eb7219c0909f4c9e&", "https://cdn.discordapp.com/attachments/1297724088789368832/1310272111931031743/image.png?ex=6764ea3f&is=676398bf&hm=d99d52fe0111d0b7ec2ef11aebda4e2908a040c2ce7d0b07eb7219c0909f4c9e&", "https://cdn.discordapp.com/attachments/1297724088789368832/1310272111931031743/image.png?ex=67a2e0bf&is=67a18f3f&hm=394d42b78c640ca075d9117b9c5392309817de518c236ec202e979633c928545&", "https://cdn.discordapp.com/attachments/1297724088789368832/1310190253965053993/Medal_23_11_2024_22_54_08.png?ex=67a29482&is=67a14302&hm=1375e6aaf80eb4a0f279d35e5b1d709ba3e19e4ac0e9512b2beb0155dcbcb5ca&", "https://cdn.discordapp.com/attachments/1297724088789368832/1310007998843719731/20241123143123_1.jpg?ex=67a29385&is=67a14205&hm=0ff67d1d009a8e58c8fafac3f2dce0ff8576b7be2ac747cb4954311697e7caa3&", "https://cdn.discordapp.com/attachments/1297724088789368832/1309722577127735337/20241121003543_1.jpg?ex=67a2db33&is=67a189b3&hm=16e1da3fd7c036ad6234b29c8f904c97fff275a3e30a1152275f346397fb69ad&", "https://cdn.discordapp.com/attachments/1297724088789368832/1308950916069720106/image.png?ex=67a2af89&is=67a15e09&hm=0726ee3990198d4fa53c85f248190ccbc9ecbaa4e787c87d68846c08473a8aa7&", "https://cdn.discordapp.com/attachments/1297724088789368832/1308596543615406091/image.png?ex=67a2b700&is=67a16580&hm=a1c889ecfaf56df870d2577522c13c75baefd4c7ad39faa181d41320295a0359&", "https://cdn.discordapp.com/attachments/1297724088789368832/1307852612720132116/image.png?ex=67a2a529&is=67a153a9&hm=01ac632ec00679b6556cc0f0b5e6ddfba3ce85c0276d5391777b122414734369&", "https://cdn.discordapp.com/attachments/1297724088789368832/1307738158171160586/4000_89.jpg?ex=67a2e351&is=67a191d1&hm=f1fe3de6601154a18b4b88ca9eb0d6bcdb20849013b3580c4aa2b54e9051835c&", "https://cdn.discordapp.com/attachments/1297724088789368832/1307738158573555752/4000_83.jpg?ex=67a2e351&is=67a191d1&hm=bdf106fea25a7b2b461c8cc50d33d79acab1fd01267bfe8b6eca2e53bd0ba144&", "https://cdn.discordapp.com/attachments/1297724088789368832/1307493243671281674/GcejWSlXsAAJwrP.png?ex=67a2a7f9&is=67a15679&hm=9278cf6ccdd04ed84e81d0627d43c78e2aa43cf900342658b64f9bf43889f496&", "https://cdn.discordapp.com/attachments/1297724088789368832/1307381971541823570/image.png?ex=67a2e917&is=67a19797&hm=670d579029db8d688440f263883b00bb7ee36dfd426cfc4f1eec9e3e94413edb&", "https://cdn.discordapp.com/attachments/1297724088789368832/1307381925433970718/image.png?ex=67a2e90d&is=67a1978d&hm=f3f77605b02dca3330ae4452820ab459a616511eb845c5f9f245dea7418efd42&", "https://cdn.discordapp.com/attachments/1297724088789368832/1306877768910508083/image-31.png?ex=67a26504&is=67a11384&hm=3280d2523e91a65173ce33256366540dbdd3f3ae3ce7ef05a09c3d1af1e9d15e&", "https://cdn.discordapp.com/attachments/1297724088789368832/1306844718356889600/image.png?ex=67a2eefc&is=67a19d7c&hm=1c02b7da7b8caf1b17cecbee45407dd4f203e1e5c3d7d115a8fc0a8b72b8ffe7&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305978779004309514/20241103162033_1.jpg?ex=67a26b84&is=67a11a04&hm=d72b00698f2e8ef6f20bbe89e0829a8c9296099bca4ddc956adcefd646236201&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305978749765812234/20241103162033_1.jpg?ex=67a26b7d&is=67a119fd&hm=bb533c4091efbebb70f75250541786ee73944d7099b86c482cefb84f07586a47&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305731542923870250/image.png?ex=67a2d6c3&is=67a18543&hm=d21cecba32f06afea759b44ec03930f129b8ee7b95ea223f1f2ffefd6c35fd36&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305650748096512020/image.png?ex=67a28b84&is=67a13a04&hm=e1adcef39392d8d05e84595b488b96e6451d41a2a91427f50a732994c4a88261&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305472895652462592/image.png?ex=67a28ea0&is=67a13d20&hm=9ab05b77d82c92db0add526e54d99d5779b03681643df8a1afdcef9fe490160e&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305325072944201779/1070087967294631976-i-1305319885307383850-gc-1274692453093347368-1298835448017191034-1175773.png?ex=67a2adb5&is=67a15c35&hm=a04672cf75da083f3cd96bcf319a942fcdfdcb572de0dbc1a7ceef9a058b3521&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305314873374412800/image-6.png?ex=67a2a435&is=67a152b5&hm=f9b48451db44e7226f0fb4a6463fccd11313d07ff70f6d7fd61df049b390fc05&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305117469987573820/20241110023017_1.jpg?ex=67a2951c&is=67a1439c&hm=944f42dc27393775f3e8bee357a3ff450a93d5a3f585f3ccf912c8be46cfeea5&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305109610671247371/image.png?ex=67a28dca&is=67a13c4a&hm=f2f3825c284dc8e24321a639a5aa072ef1f54023bce35e5982ac838d1f8ec2f3&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305100369738600458/Homigrad_Jesus.jpg?ex=67a2852f&is=67a133af&hm=be3b8e4ae68488fa201610ce803eb3b9e0ade3494f4023a65eab6785c7262209&", "https://cdn.discordapp.com/attachments/1297724088789368832/1305012707212267572/image.png?ex=67a2dc4b&is=67a18acb&hm=a5b8c3cbac077ee51c77da0e6a81423ae288449f6800d271eb38ca526a08fed7&", "https://cdn.discordapp.com/attachments/1297724088789368832/1304795176329543690/image.png?ex=67a2ba73&is=67a168f3&hm=31216d66da17572c858bdda21d1252fb5d27bb2fb27b76283b6047614507b3fa&", "https://cdn.discordapp.com/attachments/1297724088789368832/1304449488001302538/image.png?ex=67a2ca01&is=67a17881&hm=8486b025063ff4d8dee45076dbb54145af9760bd203491a732c6d60ab9eb6e9f&", "https://cdn.discordapp.com/attachments/1297724088789368832/1304292701587378217/Screenshot_975.png?ex=67a2e0bc&is=67a18f3c&hm=235557aace990e44bd25113c8f3a90e180e97d9975f87f11ec3bc6f0fbe73f38&", "https://cdn.discordapp.com/attachments/1297724088789368832/1304292592661303328/Screenshot_1012.png?ex=67a2e0a2&is=67a18f22&hm=8a57482cc6eaa38fa570c1b5629721d3d0f69b8443ed74e9f6c41f219915aa29&", "https://cdn.discordapp.com/attachments/1297724088789368832/1304223931573473331/Screenshot_2024-11-07_163946.png?ex=67a2a0b0&is=67a14f30&hm=70dfdb0e6b86820978ce382ad4d367fcaa048e7b5b5836ecbb7f868c6c9cc127&", "https://cdn.discordapp.com/attachments/1297724088789368832/1304223851000893471/poster-24-11-07_15-42-30.png?ex=67a2a09d&is=67a14f1d&hm=ff9d36a47703d4f30207f569a28be0796efec2f905850ac928080cb53dc22f02&", "https://cdn.discordapp.com/attachments/1297724088789368832/1304181987476508782/image.png?ex=67a279a0&is=67a12820&hm=a770f69f426aed6311cdfa05e0361f530bc53957b63fd30b40fe34c2baa606fc&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303968530638700575/1000_Homicide_Rounds_Stare.png?ex=67a30454&is=67a1b2d4&hm=4e7d7680f3b33b936c9e6a2ade2d108a1bde6ef6fe64625b100b48d670b3a146&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303889369282904074/homigrad_2.png?ex=67a2ba9a&is=67a1691a&hm=66737ed4aeb449342e4213c5ef3eb05b0bb76f53169a745c099bfef0eb3244ca&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303889330468552764/homigrad1.png?ex=67a2ba91&is=67a16911&hm=c5653c1c76d913540f0bea98b00667b06aa6fe5e43e4cfddd3b4b2f8b415abe4&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303889295005843466/20241105024548_1.png?ex=67a2ba89&is=67a16909&hm=0a44e07a8a68f2f922890e8b0a8a3211d643621d92a796e6b95921d3eba72380&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303888363832741888/poster-24-11-03_01-04-40.png?ex=67a2b9ab&is=67a1682b&hm=3bbf1883dce0862fcaa4944ec8746190eee91ae473bb0617cda03ea178fb68f6&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303853856332976209/image.png?ex=67a29987&is=67a14807&hm=561f9198e71f1f441350964fa82f6c2342e9cb77a3a5c0d399365a0c2fe1790e&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303809061493674035/MORTY.PNG?ex=67a26fcf&is=67a11e4f&hm=c52f761d0e42f102f4b0db26521d85d502150ca2bb1b554d7987c0d1fe57a026&", "https://cdn.discordapp.com/attachments/1297724088789368832/1303738985444540496/image.png?ex=67a2d74c&is=67a185cc&hm=5efa4c4f2d4888e66e515e89406444afbd5aab2138ca688f034b3f622acd9ef6&", "https://cdn.discordapp.com/attachments/1297724088789368832/1299166403735060521/20241019214619_1.jpg?ex=67a2af7f&is=67a15dff&hm=c3f63215b0b18bbe671bb416992eb28d9dcabc19563de624229ee7ad5d2730f4&", "https://cdn.discordapp.com/attachments/1297724088789368832/1298999418871087114/putib.PNG?ex=67a2bcbb&is=67a16b3b&hm=844d3091bb5fc433dc7d4f980099ddb07fed2b04a17a04288cda51a2d3d3a2c2&", "https://cdn.discordapp.com/attachments/1297724088789368832/1298122127114899498/homigradposter.png?ex=67a2d771&is=67a185f1&hm=3c3328ca55622c4add88e243392277e646b56b549bd4cde24557094d55c0ad78&"]
+  let usesPhotos = []
+  let background1 = document.getElementById("1")
+  let background2 = document.getElementById("2")
+  let load = document.getElementById("load")
+  background2.style.opacity = 0
+  let mode = 0
+  let rand = 1
+  let animOptions = {
+    duration: 1000,
+    fill: 'forwards'
+  }
+
+  function slide() {
+    if (usesPhotos.length == 0) {
+      for (let i = 0; i < photos.length; i++) {
+        usesPhotos[i] = photos[i]
+      }
+    }
+    if (mode == 0) {
+      mode = 1
+      background2.style.backgroundImage = load.style.backgroundImage
+      background1.animate([{
+        opacity: 1
+      }, {
+        opacity: 0
+      }], animOptions)
+      background2.animate([{
+        opacity: 0
+      }, {
+        opacity: 1
+      }], animOptions)
+    } else {
+      mode = 0
+      background1.style.backgroundImage = load.style.backgroundImage
+      background1.animate([{
+        opacity: 0
+      }, {
+        opacity: 1
+      }], animOptions)
+      background2.animate([{
+        opacity: 1
+      }, {
+        opacity: 0
+      }], animOptions)
+    }
+    rand = Math.floor(Math.random() * (usesPhotos.length - 1))
+    load.style.backgroundImage = 'url("' + usesPhotos[rand] + '")'
+    usesPhotos.splice(rand, 1)
+  }
+  slide()
+  slide()
+  setInterval(slide, 2000)
+  //
+  let fileNeeded = 0
+  let fileTotal = 0
+  SetFilesTotal = function(total) {
+    fileTotal = total
+  }
+  SetFilesNeeded = function(needed) {
+    fileNeeded = needed
+  }
+  window.GameDetails = function(servername, serverurl, mapname, maxplayers, steamid, gamemode, volume, language) {
+    document.getElementById("servername").innerHTML = servername
+    document.getElementById("mapname").innerHTML = mapname
+  }
+  let loadbar = document.getElementById("loadbar")
+  let textstatus = document.getElementById("textstatus")
+
+  function updateProgress() {
+    /*var progress = (fileTotal > 0) ?
+    (Math.max(0,fileTotal - fileNeeded) / fileTotal) : 1
+
+    document.getElementById("dev").innerHTML = fileTotal + "|" + fileNeeded
+
+    loadbar.style.right = progress * 100 + "%"*/
+  }
+  window.DownloadingFile = function(filePath) {
+    fileNeeded = Math.max(0, fileNeeded - 1)
+    textstatus.innerHTML = "Downloading " + filePath
+    updateProgress()
+  }
+  window.SetStatusChanged = function(status) {
+    if (status == 'Sending Client info...') {
+      filesNeeded = 0
+      updateProgress()
+    }
+    addHistory(textstatus.innerHTML)
+    textstatus.innerHTML = status
+  }
+  updateProgress()
+  let anchor = document.getElementById("history")
+  let history = []
+
+  function addHistory(msg) {
+    let text = document.createElement("p")
+    text.classList.add("log")
+    text.innerHTML = msg
+    anchor.insertBefore(text, anchor.childNodes[0])
+    history.push(text)
+    let max = (document.getElementById("bottom").clientHeight - 100) / text.clientHeight
+    for (let i = 0; i < history.length; i++) {
+      let text = history[i]
+      let opacity = 1 - (history.length - i - 1) / max
+      text.style.opacity = opacity
+      //text.innerHTML = opacity
+      if (i > max) {
+        anchor.removeChild(history[0])
+        history.splice(0, 1)
+      }
+    }
+  }
+  //setInterval(function() {addHistory("tes55555555555555555555t" + Math.random())},500)
+</script>
