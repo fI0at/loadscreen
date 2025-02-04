@@ -22,8 +22,7 @@ body {
     color: white;
     margin: 0;
     padding: 0;
-    /*font-family: Arial, Helvetica, sans-serif;*/
-    font-family: 'Teletactile', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     scrollbar-width: thin;
     color-scheme: dark;
 
