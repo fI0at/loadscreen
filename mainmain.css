@@ -1,0 +1,264 @@
+:root {
+    --bg-color: rgb(20,20,20);
+    --bg2-color: rgb(15,15,15);
+    --cframe-white: rgba(255,255,255,15);
+    --cframe-black: rgba(0,0,0,75);
+
+    --hover-bc: rgba(255,255,255,0.1);
+    --focus-bc: rgba(255,255,255,0.05);
+    --active-bc: rgba(255,255,255,0.05)
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+*{
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    scrollbar-width: thin;
+    color-scheme: dark;
+
+    text-decoration-line: none;
+}
+
+p.name {
+    color: rgb(180,180,180);
+    padding-left: 0px;
+    padding-top: 10vh;
+    text-align: center;
+    font-size: 30px;
+}
+
+p {
+    font-size: 25px; 
+}
+
+a.light {
+    color: rgb(255,255,255);
+    caret-color: transparent;
+    user-select: none;
+}
+
+a.light:hover {
+    text-shadow: 1px 1px 2px rgb(255,255,255), 0 0 1em rgb(255,255,155), 0 0 0.2em white;
+}
+
+a.back {
+    margin: 24px;
+}
+
+a.line {
+    text-decoration-line: underline;
+}
+
+img {
+    border-radius: 8px;
+    margin: auto auto 0;
+    display: block;
+    position: relative;
+    width: 10%;
+}
+
+footer {
+    background-color: rgba(24,24,24);
+    color: rgb(25,25,65,1.0);
+    width: 100%;
+
+    /*border-width: 1px;
+    border-style: solid;
+
+    border-left-color: rgba(255,255,255,0.15);
+    border-top-color: rgba(255,255,255,0.15);
+    border-right-color: rgba(0,0,0,0.5);
+    border-bottom-color: rgba(0,0,0,0.5);*/
+
+    display: block;
+
+    position: relative;
+    bottom: 0;
+    left: 0px;
+}
+
+footer.fixed {
+    position: fixed;
+}
+
+footer > p {
+    font-size: 24px;
+    text-align: center;
+    padding: 12px;
+}
+
+ul {
+    list-style-type: none;
+    display: block;
+    overflow: hidden;
+}
+
+li {
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: list-item;
+    float: left;
+    overflow: hidden;
+}
+
+li > a {
+    display: block;
+    padding: 14px 12px;
+    
+    font-size: 20px;
+    text-align: center;
+
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.5s,
+}
+
+div.background {
+    background-image: url("/resource/back.jpg");
+    opacity: 0.01;
+    width: 100vw;
+    height: 100vh;
+    
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    
+    position: fixed;
+
+    z-index: -1;
+}
+
+div.background_en {
+    background-image: url("/resource/back_en.jpg");
+    opacity: 0.01;
+    width: 100vw;
+    height: 100vh;
+    
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    
+    position: fixed;
+
+    z-index: -1;
+}
+
+.server {
+    background-color: rgb(20,20,20);
+    border: 1px solid rgb(75,75,75);
+    outline: 1px solid rgb(0,0,0);
+    border-radius: 5px;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 0 2px rgb(255, 255, 255);
+        text-shadow: 1px 1px 2px rgb(175,175,255), 0 0 1em rgb(255,255,155), 0 0 0.2em blue;
+    }
+   
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+}
+
+h1 {color: rgb(255,255,255);}
+
+header {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(20,20,20);
+}
+
+header div.main {
+    margin: 0 auto;
+
+    width: auto;
+    max-width: 1280px;
+    height: inherit;
+
+    padding-left: 9px;
+}
+
+header div.icon {
+    background-image: url("/resource/fav.ico");
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    top: 9;
+    float: left;
+    margin-right: 9px;
+}
+
+header ul {
+    list-style: none;
+    float: right;
+    display: inline-block;
+
+    font-size: 1.5em;
+    color: white;
+}
+
+header p {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    float: left;
+
+    font-size: 1.5em;
+    color: white;
+    margin: 0;
+}
+
+@keyframes yoyo {
+    from {transform: rotate(360deg);}
+    to {transform: rotate(0deg);}
+}
+
+.rotate {
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-name: yoyo;
+    animation-timing-function: linear;
+}
+
+div.line {
+    width: 95%;
+    left: 2.5%;
+    position: relative;
+    height: 2px;
+    background-color: rgb(255,255,255);
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background_blur {
+    filter: blur(2px);
+
+    margin: -5px;
+    padding: 5px;
+}
+
+.cantcursor {
+    caret-color: transparent;
+    user-select: none;
+}
+
+.hover:hover {
+    background-color: var(--hover-bc);
+}
+
+.hover:active {
+    background-color: rgba(0,0,0,0.1);
+}
