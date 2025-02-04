@@ -1,1 +1,1 @@
-literly just homigrad loadscreen ripped from tha site x33
+Homigrad's loadscreen, ripped from the site
