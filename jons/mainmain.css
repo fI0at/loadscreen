@@ -13,12 +13,17 @@ body {
     background-color: var(--bg-color);
 }
 
+@font-face {
+    font-family: 'Teletactile';
+    src: url('/loadscreen/jons/font/teletactile.ttf') format('truetype');
+}
+
 *{
     color: white;
     margin: 0;
     padding: 0;
     /*font-family: Arial, Helvetica, sans-serif;*/
-
+    font-family: 'Teletactile', sans-serif;
     scrollbar-width: thin;
     color-scheme: dark;
 
