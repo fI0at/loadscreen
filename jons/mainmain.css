@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Teletactile';
+    src: url('/loadscreen/jons/font/teletactile.ttf') format('truetype');
+}
+
 :root {
     --bg-color: rgb(20,20,20);
     --bg2-color: rgb(15,15,15);
@@ -11,11 +16,6 @@
 
 body {
     background-color: var(--bg-color);
-}
-
-@font-face {
-    font-family: 'Teletactile';
-    src: url('/loadscreen/jons/font/teletactile.ttf') format('truetype');
 }
 
 *{
